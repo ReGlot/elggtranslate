@@ -9,6 +9,8 @@ Author URI: http://URI_Of_The_Plugin_Author
 License: GPL2
 */
 
+require_once(plugin_dir_path(__FILE__) . 'route.php');
+
 class ElggTranslatePlugin extends GP_Plugin {
     var $id = 'elggtranslate';
 
@@ -20,6 +22,8 @@ class ElggTranslatePlugin extends GP_Plugin {
         $this->add_filter('gp_tools');
         GP::$router->add_tool('elgg-import', array('ElggTranslateRoute', 'elgg_import'));
         GP::$router->add_tool('elgg-export', array('ElggTranslateRoute', 'elgg_export'));
+        $bump = '20120930';
+        wp_register_script('elggtranslate_tools', plugin_dir_url(__FILE__) . 'js/tools.js', array('common'), $bump);
     }
 
     function init() {
@@ -55,6 +59,7 @@ class ElggTranslatePlugin extends GP_Plugin {
         );
         return $config;
     }
+
 }
 
 new ElggTranslatePlugin();

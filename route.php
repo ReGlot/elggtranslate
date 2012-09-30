@@ -114,7 +114,7 @@ class ElggTranslateRoute extends GP_Route_Main {
 				return;
 			}
 		}
-		gp_tmpl_load('tools-elgg-import', get_defined_vars());
+		gp_tmpl_load('import', get_defined_vars(), plugin_dir_path(__FILE__) . 'templates/');
 	}
 
 	function elgg_export() {
@@ -200,7 +200,7 @@ class ElggTranslateRoute extends GP_Route_Main {
 			unlink($zipfile);
 			exit();
 		}
-		gp_tmpl_load('tools-elgg-export', get_defined_vars());
+        gp_tmpl_load('export', get_defined_vars(), plugin_dir_path(__FILE__) . 'templates/');
 	}
 
 	function elgglp_create_project($name, $slug, $desc, $parent = null) {
@@ -262,22 +262,22 @@ class ElggTranslateRoute extends GP_Route_Main {
 
 	function elgglp_error_and_export_form($message) {
 		GP::$redirect_notices['error'] = $message;
-		gp_tmpl_load('tools-elgg-export', get_defined_vars());
+        gp_tmpl_load('export', get_defined_vars(), plugin_dir_path(__FILE__) . 'templates/');
 	}
 
 	function elgglp_success_and_export_form($message) {
 		GP::$redirect_notices['notice'] = $message;
-		gp_tmpl_load('tools-elgg-export', get_defined_vars());
+        gp_tmpl_load('export', get_defined_vars(), plugin_dir_path(__FILE__) . 'templates/');
 	}
 
 	function elgglp_error_and_import_form($message) {
 		GP::$redirect_notices['error'] = $message;
-		gp_tmpl_load('tools-elgg-import', get_defined_vars());
+        gp_tmpl_load('import', get_defined_vars(), plugin_dir_path(__FILE__) . 'templates/');
 	}
 
 	function elgglp_success_and_import_form($message) {
 		GP::$redirect_notices['notice'] = $message;
-		gp_tmpl_load('tools-elgg-import', get_defined_vars());
+        gp_tmpl_load('import', get_defined_vars(), plugin_dir_path(__FILE__) . 'templates/');
 	}
 
 	function elgglp_import_languagemod($meta, $srcdir, $filters) {

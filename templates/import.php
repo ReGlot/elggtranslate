@@ -1,10 +1,10 @@
 <?php
-gp_title(__('Elgg Import'));
+gp_title(__('Elgg Translate Import'));
 gp_tmpl_header();
 $project_dropdown1 = gp_projects_dropdown('import[core_project]', $import['core_project'], array(), 'Create a new project', true);
 $project_dropdown2 = gp_projects_dropdown('import[plugin_project]', $import['plugin_project'], array(), 'Create a new project', true);
 ?>
-<h2><?php _e('GlotPress Tools'); ?></h2>
+<h2><?php _e('Elgg Translate Import'); ?></h2>
 
 <form action="" method="post" class="secondary" enctype="multipart/form-data">
 <input type="hidden" name="import[gp_handle_settings]" value="on">

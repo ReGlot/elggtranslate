@@ -1,12 +1,12 @@
 <?php
-wp_enqueue_script('elgg_import_export');
-gp_title(__('Elgg Export'));
+wp_enqueue_script('elggtranslate_tools');
+gp_title(__('Elgg Translate Export'));
 gp_tmpl_header();
 $project_dropdown1 = gp_projects_dropdown('export[elggcoreproject]', $export['elggcoreproject'], array(), 'Select an Elgg project', true);
 $project_dropdown2 = gp_projects_dropdown('export[elgg3rdproject]', $export['elgg3rdproject'], array(), 'No 3rd Party project', true);
 $version_dropdown = gp_select('export[version]', array('' => '&mdash; Choose a version &mdash;', '2' => 'Version 1.9 and later', '1' => 'Version 1.8 and earlier'), $export['version']);
 ?>
-<h2><?php _e('GlotPress Tools'); ?></h2>
+<h2><?php _e('Elgg Translate Export'); ?></h2>
 <?php if ( GP::$project->by_slug('elgg') ): ?>
 <form action="" method="post" class="filters-toolbar" enctype="multipart/form-data">
 <input type="hidden" name="export[gp_handle_settings]" value="on">
