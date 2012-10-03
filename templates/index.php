@@ -5,7 +5,7 @@ gp_tmpl_header();
 	<h2>Welcome to the Elgg Translation Portal</h2>
 	<p>
 		In these pages you can find a collection of language packs for <a href="http://www.elgg.org">Elgg</a>,
-		one - if not the - greatest engine for social networking.
+		one - if not the - greatest engine for social networking websites.
 	</p>
 	<p>
 		The best way to use this portal is together with the <a href="http://community.elgg.org/plugins/1095926/1.0/language-packs">Language Pack plugin</a>
@@ -37,8 +37,8 @@ gp_tmpl_header();
     <?php } ?>
 	<h3>Notice</h3>
 	<p>
-		This project is maintained by <a href="http://www.federicomestrone.com">myself</a> for the Elgg community, but is not directly affiliated to Elgg.<br>
-		This project is built on <?php echo gp_app_name(); ?>, an extension and hack of GlotPress also maintained by <a href="http://www.federicomestrone.com">myself</a>.
+		This website is powered by <a href="http://www.reglot.org" title="Social Translating">Re&sdot;Glot</a> for the Elgg community, but is not directly affiliated to Elgg.<br>
+		The Elgg functionality and tools are provided by the <a href="https://github.com/ReGlot/elggtranslate">Elgg Translate plugin</a>, part of the Re&sdot;Glot project.
 	</p>
 <?php
 gp_tmpl_footer();
