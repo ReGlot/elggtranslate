@@ -97,7 +97,7 @@ $version_dropdown = gp_select('export[version]', array('' => '&mdash; Choose a v
 
 		<p>
 		<label for="export[elggpath]"><?php _e('Type the name for the file to download'); ?></label><br/>
-		<input type="text" name="export[elggpath]" id="elggpath" style="width:400px" value="<?php echo $export['elggpath']; ?>"><br/>
+		<input type="text" name="export[elggpath]" id="elggpath" style="width:400px" value="<?php echo $_POST['export[elggpath]']; ?>"><br/>
 		<small><?php _e('You can leave this blank and the file will be called <i>elgg-languages.zip</i>.'); ?></small>
 		</p>
 <?php
