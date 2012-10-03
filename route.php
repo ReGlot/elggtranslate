@@ -131,14 +131,14 @@ class ElggTranslateRoute extends GP_Route_Main {
 			if ( @empty($elgg_plugins[0]) ) $elgg_plugins = array();
 			if ( @empty($elgg_locales[0]) ) $elgg_locales = array();
 			// work out the name of the file to send to the browser as content-disposition
-			$file2download = $export['elggpath'] ? $export['elggpath'] : 'elgg-languages.zip';
+			$file2download = @$_POST['export']['elggpath'] ? @$_POST['export']['elggpath'] : 'elgg-languages.zip';
 			if ( substr($file2download, -4) != '.zip' ) {
 				$file2download .= '.zip';
 			}
 			// are original English texts to be included in language pack?
-			$originals = ($export['originals'] == 'on');
+			$originals = (@$_POST['export']['originals'] == 'on');
 			// should empty translation files to created in language pack?
-			$export_empty = ($export['empty'] == 'on');
+			$export_empty = (@$_POST['export']['empty'] == 'on');
 			// let's get information about the core project (use camelCase for object variables)
 			$coreProject = GP::$project->by_slug('elgg');
 			if ( !$coreProject ) {
@@ -235,7 +235,7 @@ class ElggTranslateRoute extends GP_Route_Main {
 		foreach( (array)$rows as $row ) {
 			$row->translations = array();
 			$row->translations[] = $row->singular;
-			$row->extracted_comment = $row->comment;
+			$row->extracted_comments = $row->comment;
 			$entries[] = new Translation_Entry((array)$row);
 		}
 		unset($rows);
