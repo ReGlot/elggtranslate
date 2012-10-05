@@ -330,7 +330,7 @@ class ElggTranslateRoute extends GP_Route_Main {
 			// it is a third party plugin
 			$slug .= "---v$meta[version]";
 			if ( !($projectObj = GP::$project->by_path("{$this->pluginProject->slug}/$slug")) ) {
-				$projectObj = $this->elgglp_create_project($meta['name'], $slug, $meta['description'], $this->pluginProject);
+				$projectObj = $this->elgglp_create_project("$meta[name] v$meta[version]", $slug, $meta['description'], $this->pluginProject);
 			}
 		}
 		if ( $projectObj ) {
