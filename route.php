@@ -20,8 +20,7 @@ class ElggTranslateRoute extends GP_Route_Main {
 			// the uploaded file to import
 			$file2upload = $_FILES['upload']['tmp_name'];
 			if ( !$file2upload ) {
-				register_error(elgg_echo('languagepacks:error:upload'));
-				$this->elgglp_error_and_import_form(__('No file to import'));
+				$this->elgglp_error_and_import_form(__('No file to import', 'elggtranslate'));
 				return;
 			}
 			// open the Zip file
@@ -73,10 +72,10 @@ class ElggTranslateRoute extends GP_Route_Main {
 				switch ( elgglp_recurse_language_pack($newdir, $filters, $callback) ) {
 					case ELGGLP_ERR_STRUCTURE:
                         elgglp_deltree($newdir);
-                        $this->elgglp_error_and_import_form(__('Could not find an Elgg language pack in the ZIP file you specified'));
+                        $this->elgglp_error_and_import_form(__('Could not find an Elgg language pack in the ZIP file you specified', 'elggtranslate'));
 					case ELGGLP_ERR_VERSION:
                         elgglp_deltree($newdir);
-                        $this->elgglp_error_and_import_form(__('The version of your language pack is not supported by this plugin'));
+                        $this->elgglp_error_and_import_form(__('The version of your language pack is not supported by this plugin', 'elggtranslate'));
 					case ELGGLP_OK:
 						elgglp_deltree($newdir);
 						$all_langs = array_keys($this->translations_added);
@@ -99,9 +98,9 @@ class ElggTranslateRoute extends GP_Route_Main {
 								}
 							}
 						}
-						$message = sprintf(__('Import completed successfully with %d new and %d updated originals<br/>'), $this->originals_added, $this->originals_updated);
+						$message = sprintf(__('Import completed successfully with %d new and %d updated originals<br/>', 'elggtranslate'), $this->originals_added, $this->originals_updated);
 						foreach ( $this->translations_added as $lang => $added ) {
-							$message .= sprintf(__('Added %d entries to [%s] translations<br/>'), $added, $lang);
+							$message .= sprintf(__('Added %d entries to [%s] translations<br/>', 'elggtranslate'), $added, $lang);
 						}
 						foreach ( $this->import_errors as $error ) {
 							$message .= "\n$error<br/>";
@@ -110,7 +109,7 @@ class ElggTranslateRoute extends GP_Route_Main {
 						return;
 				}
 			} else {
-				$this->elgglp_error_and_import_form(__('Could not open the ZIP file you specified'));
+				$this->elgglp_error_and_import_form(__('Could not open the ZIP file you specified', 'elggtranslate'));
 				return;
 			}
 		}
@@ -142,7 +141,7 @@ class ElggTranslateRoute extends GP_Route_Main {
 			// let's get information about the core project (use camelCase for object variables)
 			$coreProject = GP::$project->by_slug('elgg');
 			if ( !$coreProject ) {
-				$this->elgglp_error_and_export_form(__('Core Elgg project could not be found'));
+				$this->elgglp_error_and_export_form(__('Core Elgg project could not be found', 'elggtranslate'));
 				return;
 			}
 			$filters['elgg_release'] = gp_retrieve_meta($coreProject->id, 'elgg_version', 'gp_project');
@@ -169,6 +168,7 @@ class ElggTranslateRoute extends GP_Route_Main {
 				// if not found, log error and continue
 				if ( !$subProject ) {
 					error_log("ElggExport: Could not open Elgg subproject $projectid in export loop");
+                    continue;
 				}
 				// get the metadata for the project
 				$meta = array();
@@ -223,7 +223,7 @@ class ElggTranslateRoute extends GP_Route_Main {
 		$new_project = new GP_Project($data);
 		$project = GP::$project->create_and_select($new_project);
 		if ( !$project ) {
-			GP::$redirect_notices['error'] .= 'Could not create project ' . $name;
+			GP::$redirect_notices['error'] .= sprintf(__('Could not create project %s', 'elggtranslate'), $name);
 			return false;
 		}
 		return $project;
@@ -289,7 +289,7 @@ class ElggTranslateRoute extends GP_Route_Main {
 		if ( !$this->coreProject ) {
 			if ( $filters['coreproject'] ) {
 				if ( !($this->coreProject = GP::$project->get($filters['coreproject'])) ) {
-					GP::$redirect_notices['error'] = 'Could not find the project to import into';
+					GP::$redirect_notices['error'] = __('Could not find the project to import into', 'elggtranslate');
 					return false;
 				}
 			} else {
@@ -306,7 +306,7 @@ class ElggTranslateRoute extends GP_Route_Main {
 		if ( !$this->pluginProject ) {
 			if ( $filters['pluginproject'] ) {
 				if ( !($this->pluginProject = GP::$project->get($filters['pluginproject'])) ) {
-					GP::$redirect_notices['error'] = 'Could not find the project to import into';
+					GP::$redirect_notices['error'] = __('Could not find the project to import into', 'elggtranslate');
 					return false;
 				}
 			} else {
@@ -384,7 +384,7 @@ class ElggTranslateRoute extends GP_Route_Main {
 				// update import stats
 				$this->translations_added[$lang] += $translations_added;
 			} else {
-				$this->import_errors[] = sprintf(__('Could not create translations into %s for %s'), $lang, $meta['unique']);
+				$this->import_errors[] = sprintf(__('Could not create translations into %s for %s', 'elggtranslate'), $lang, $meta['unique']);
 			}
 		}
 	}

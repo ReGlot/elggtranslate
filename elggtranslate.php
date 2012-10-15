@@ -20,6 +20,7 @@ class ElggTranslatePlugin extends GP_Plugin {
         $this->add_action('index');
         $this->add_action('gp_app_name');
         $this->add_filter('gp_tools');
+        $this->add_action('gp_footer');
         GP::$router->add_tool('elgg-import', array('ElggTranslateRoute', 'elgg_import'));
         GP::$router->add_tool('elgg-export', array('ElggTranslateRoute', 'elgg_export'));
         $bump = '20120930';
@@ -36,7 +37,7 @@ class ElggTranslatePlugin extends GP_Plugin {
     }
 
     function index() {
-        include plugin_dir_path(__FILE__) . 'templates/index.php';
+        gp_tmpl_load('index', array(), plugin_dir_path(__FILE__) . 'templates');
     }
 
     function gp_app_name() {
@@ -45,21 +46,24 @@ class ElggTranslatePlugin extends GP_Plugin {
 
     function gp_tools($config) {
         // always assume that other plugins might be using the same section, so just add to it
-        $config[__('Elgg Tools')][] = array(
-            'title' => __('Elgg Import'),
-            'description' => __('Create a set of GlotPress projects from an Elgg language pack'),
+        $config[__('Elgg Tools', 'elggtranslate')][] = array(
+            'title' => __('Elgg Import', 'elggtranslate'),
+            'description' => __('Create a set of GlotPress projects from an Elgg language pack', 'elggtranslate'),
             'link' => 'elgg-import',
             'admin_only' => true,
         );
-        $config[__('Elgg Tools')][] = array(
-            'title' => __('Elgg Export'),
-            'description' => __('Create a language pack from a set of GlotPress projects for Elgg'),
+        $config[__('Elgg Tools', 'elggtranslate')][] = array(
+            'title' => __('Elgg Export', 'elggtranslate'),
+            'description' => __('Create a language pack from a set of GlotPress projects for Elgg', 'elggtranslate'),
             'link' => 'elgg-export',
             'admin_only' => false,
         );
         return $config;
     }
 
+    function gp_footer() {
+        gp_tmpl_load('piwik', array(), plugin_dir_path(__FILE__) . 'templates');
+    }
 }
 
 new ElggTranslatePlugin();

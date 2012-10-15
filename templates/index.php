@@ -1,24 +1,24 @@
 <?php
-gp_title(__('Welcome'));
+gp_title(__('Welcome', 'elggtranslate'));
 gp_tmpl_header();
 ?>
-	<h2>Welcome to the Elgg Translation Portal</h2>
+	<h2><?php _e('Welcome to the Elgg Translation Portal', 'elggtranslate') ?></h2>
 	<p>
-		In these pages you can find a collection of language packs for <a href="http://www.elgg.org">Elgg</a>,
-		one - if not the - greatest engine for social networking websites.
+		<?php _e('In these pages you can find a collection of language packs for <a href="http://www.elgg.org">Elgg</a>,
+		one - if not the - greatest engine for social networking websites.', 'elggtranslate') ?>
 	</p>
 	<p>
-		The best way to use this portal is together with the <a href="http://community.elgg.org/plugins/1095926/1.0/language-packs">Language Pack plugin</a>
+        <?php _e('The best way to use this portal is together with the <a href="http://community.elgg.org/plugins/1095926/1.0/language-packs">Language Pack plugin</a>
 		for Elgg, which imports and exports Zip files in exactly the format produced or processed
-		by this translation portal.
+		by this translation portal.', 'elggtranslate') ?>
 	</p>
 	<p>
-		You can browse translations
+        <?php _e('You can browse translations', 'elggtranslate') ?>
 		<ul>
-			<li><a href="<?php echo gp_url_project(); ?>">by project</a></li>
-			<li><a href="<?php echo gp_url_by_translation(); ?>">by language or translation sets</a></li>
+			<li><a href="<?php echo gp_url_project(); ?>"><?php _e('by project', 'elggtranslate') ?></a></li>
+			<li><a href="<?php echo gp_url_by_translation(); ?>"><?php _e('by language or translation sets', 'elggtranslate') ?></a></li>
             <?php if ( GP::$user->logged_in() ) { ?>
-            <li>by user (the translation column in the <a href="<?php echo gp_url_users(); ?>">users list page</a>)</li>
+            <li><a href="<?php echo gp_url_users(); ?>"><?php _e('by translator', 'elggtranslate') ?></a></li>
             <?php } ?>
 		</ul>
 	</p>
