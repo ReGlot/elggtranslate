@@ -31,7 +31,7 @@ $version_dropdown = gp_select('export[version]', array(
 
 	<div class="cores hidden clearfix">
 			<ul class="filters-expanded selection-expanded">
-				<li><?php __e('Available for Export', 'elggtranslate') ?><br/><select id="select1_cores" multiple="multiple" class="elgg-input-dropdown languagepacks-select">
+				<li><?php _e('Available for Export', 'elggtranslate') ?><br/><select id="select1_cores" multiple="multiple" class="elgg-input-dropdown languagepacks-select">
 				</select>
 				</li>
 				<li><div class="languagepacks-buttons">
@@ -39,7 +39,7 @@ $version_dropdown = gp_select('export[version]', array(
 </p><p><input type="button" id="add-all_cores" value="Add All" class="elgg-button">
 </p><p><input type="button" id="remove-all_cores" value="Remove All" class="elgg-button">
 </p><p><input type="button" id="remove_cores" value="Remove Selected" class="elgg-button">
-</p></div></li><li><?php __e('Selected for Export', 'elggtranslate') ?><br/><select id="select2_cores" multiple="multiple" class="elgg-input-dropdown languagepacks-select">
+</p></div></li><li><?php _e('Selected for Export', 'elggtranslate') ?><br/><select id="select2_cores" multiple="multiple" class="elgg-input-dropdown languagepacks-select">
 		<?php
 		$projects = GP::$project->by_slug('elgg')->sub_projects();
 		foreach ( $projects as $project ) {
@@ -52,7 +52,7 @@ $version_dropdown = gp_select('export[version]', array(
 
 	<div class="plugins hidden clearfix">
 			<ul class="filters-expanded selection-expanded">
-				<li><?php __e('Available for Export', 'elggtranslate') ?><br/><select id="select1_plugins" multiple="multiple" class="elgg-input-dropdown languagepacks-select">
+				<li><?php _e('Available for Export', 'elggtranslate') ?><br/><select id="select1_plugins" multiple="multiple" class="elgg-input-dropdown languagepacks-select">
 				</select>
 				</li>
 				<li><div class="languagepacks-buttons">
@@ -60,7 +60,7 @@ $version_dropdown = gp_select('export[version]', array(
 </p><p><input type="button" id="add-all_plugins" value="Add All" class="elgg-button">
 </p><p><input type="button" id="remove-all_plugins" value="Remove All" class="elgg-button">
 </p><p><input type="button" id="remove_plugins" value="Remove Selected" class="elgg-button">
-</p></div></li><li><?php __e('Selected for Export', 'elggtranslate') ?><br/><select id="select2_plugins" multiple="multiple" class="elgg-input-dropdown languagepacks-select">
+</p></div></li><li><?php _e('Selected for Export', 'elggtranslate') ?><br/><select id="select2_plugins" multiple="multiple" class="elgg-input-dropdown languagepacks-select">
 		<?php
 		$projects = GP::$project->by_path('elgg3rd') ? GP::$project->by_path('elgg3rd')->sub_projects() : array();
 		foreach ( $projects as $project ) {
@@ -73,7 +73,7 @@ $version_dropdown = gp_select('export[version]', array(
 
 	<div class="locales hidden clearfix">
 			<ul class="filters-expanded selection-expanded">
-				<li><?php __e('Available for Export', 'elggtranslate') ?><br/><select id="select1_locales" multiple="multiple" class="elgg-input-dropdown languagepacks-select">
+				<li><?php _e('Available for Export', 'elggtranslate') ?><br/><select id="select1_locales" multiple="multiple" class="elgg-input-dropdown languagepacks-select">
 				</select>
 		<br/>
 		<input type="checkbox" name="export[empty]" value="on">
@@ -84,7 +84,7 @@ $version_dropdown = gp_select('export[version]', array(
 </p><p><input type="button" id="add-all_locales" value="Add All" class="elgg-button">
 </p><p><input type="button" id="remove-all_locales" value="Remove All" class="elgg-button">
 </p><p><input type="button" id="remove_locales" value="Remove Selected" class="elgg-button">
-</p></div></li><li><?php __e('Selected for Export', 'elggtranslate') ?><br/><select id="select2_locales" multiple="multiple" class="elgg-input-dropdown languagepacks-select">
+</p></div></li><li><?php _e('Selected for Export', 'elggtranslate') ?><br/><select id="select2_locales" multiple="multiple" class="elgg-input-dropdown languagepacks-select">
 		<?php
 		$locales = GP::$translation_set->locales_in_use();
 		foreach ( $locales as $slug ) {
